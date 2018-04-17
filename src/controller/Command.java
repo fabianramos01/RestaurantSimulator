@@ -4,8 +4,8 @@ import javax.swing.ImageIcon;
 
 public enum Command {
 
-	COMMAND_PLAY("COMMAND_PLAY", "Iniciar", "/img/.png"),
-	COMMAND_CANCEL("COMMAND_CANCEL", "Cancelar", "/img/.png");
+	COMMAND_PLAY("COMMAND_PLAY", "Iniciar", "/img/play.png"),
+	COMMAND_CANCEL("COMMAND_CANCEL", "Cancelar", "/img/cancel.png");
 	
 	private String command;
 	private String title;
