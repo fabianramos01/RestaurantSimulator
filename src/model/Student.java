@@ -10,7 +10,7 @@ public class Student {
 
 	public Student() {
 		Random random = new Random();
-		code = random.nextInt();
+		code = random.nextInt(1000);
 		credit = random.nextBoolean();
 	}
 

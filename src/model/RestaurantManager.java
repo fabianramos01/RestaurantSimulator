@@ -36,6 +36,10 @@ public class RestaurantManager {
 		}
 	}
 	
+	public void buyCredit() {
+		lunchQueue.enqueue(creditQueue.dequeue());
+	}
+	
 	public void addToReturn() {
 		returnQueue.enqueue(eatList.getFirst());
 	}

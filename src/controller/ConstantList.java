@@ -9,4 +9,6 @@ public class ConstantList {
 	public static final String STUDENT_IMG = "/img/student.jpg";
 	public static final String STAND_IMG = "/img/stand.png";
 	
+	public static final String CREDITS_QUEUE = "Fila de creditos";
+	public static final String LUNCH_QUEUE = "Fila de almuerzo";
 }

@@ -17,6 +17,7 @@ public class ViewManager {
 	
 	public void loadRestaurantPanel() {
 		principalFrame.add(panelRestaurant);
+		principalFrame.repaint();
 	}
 	
 	public void loadCreditList(ArrayList<Student> list) {
