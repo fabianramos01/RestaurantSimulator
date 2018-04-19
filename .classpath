@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="lib/MyLinkedList.jar"/>
 	<classpathentry kind="lib" path="lib/UtilitiesUI.jar"/>
+	<classpathentry kind="lib" path="lib/Tree.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
