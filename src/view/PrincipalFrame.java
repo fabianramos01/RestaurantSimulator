@@ -13,6 +13,7 @@ public class PrincipalFrame extends JFrame {
 		setTitle(ConstantList.TITLE);
 		setIconImage(new ImageIcon(getClass().getResource(ConstantList.ICON_APP)).getImage());
 		setLocationRelativeTo(null);
-		setResizable(false);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
 	}
 }
