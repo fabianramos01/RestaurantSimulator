@@ -6,6 +6,8 @@ public class RestaurantManager {
 
 	private MyQueue<Student> creditQueue;
 	private MyQueue<Student> lunchQueue;
+	private MyQueue<Student> returnQueue;
+	private Tree
 	private Stack<Tray> trayStack;
 	
 	
