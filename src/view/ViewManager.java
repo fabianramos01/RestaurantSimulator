@@ -12,6 +12,7 @@ public class ViewManager {
 	
 	public ViewManager(Controller controller) {
 		principalFrame = new PrincipalFrame();
+		panelRestaurant = new PanelRestaurant();
 	}
 	
 	public void loadRestaurantPanel() {
