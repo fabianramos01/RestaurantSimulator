@@ -31,6 +31,7 @@ public class Controller implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				restManager.addPersonToSystem();
 				validateCreditTime();
+				validateLunchTime();
 				viewManager.loadCreditList(restManager.getCreditQueue());
 				viewManager.loadLunchList(restManager.getLunchQueue());
 			}
@@ -58,7 +59,7 @@ public class Controller implements ActionListener {
 	private void validateLunchTime() {
 		if (!restManager.getLunchQueue().isEmpty()) {
 			if (timerLunch.isRunning()) {
-				restManager.buyCredit();
+				restManager.addToEat();
 				viewManager.loadLunchList(restManager.getLunchQueue());
 				viewManager.loadEatList(restManager.getEatList());
 			} else {
