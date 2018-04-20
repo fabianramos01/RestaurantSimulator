@@ -16,9 +16,8 @@ public class Controller implements ActionListener {
 	private Timer timerLunch;
 
 	public Controller() {
-		viewManager = new ViewManager(this);
 		restManager = new RestaurantManager();
-		viewManager.loadRestaurantPanel();
+		viewManager = new ViewManager(this);
 		timeCredit();
 		timePerson();
 		timeLunch();
@@ -32,8 +31,6 @@ public class Controller implements ActionListener {
 				restManager.addPersonToSystem();
 				validateCreditTime();
 				validateLunchTime();
-				viewManager.loadCreditList(restManager.getCreditQueue());
-				viewManager.loadLunchList(restManager.getLunchQueue());
 			}
 		});
 		timer.start();
@@ -68,7 +65,7 @@ public class Controller implements ActionListener {
 			}
 		} else {
 			if (timerLunch != null) {
-				timerCredit.stop();
+				timerLunch.stop();
 			}
 		}
 	}

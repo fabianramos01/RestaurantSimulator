@@ -1,4 +1,4 @@
-package model;
+ package model;
 
 import java.util.Random;
 
@@ -32,5 +32,10 @@ public class Student {
 
 	public int getCode() {
 		return code;
+	}
+	
+	@Override
+	public String toString() {
+		return String.valueOf(code);
 	}
 }

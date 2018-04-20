@@ -11,7 +11,7 @@ public class RestaurantManager {
 	private MyQueue<Student> lunchQueue;
 	private MyQueue<Student> returnQueue;
 	private Stack<Tray> trayStack;
-	private NodeList<Student> eatList;
+	private MyQueue<Student> eatList;
 	private int credits;
 	private int lunchCount;
 	
@@ -20,7 +20,7 @@ public class RestaurantManager {
 		lunchQueue = new MyQueue<>();
 		returnQueue = new MyQueue<>();
 		trayStack = new Stack<>();
-		eatList = new NodeList<>();
+		eatList = new MyQueue<>();
 		addToTray();
 	}
 	
@@ -42,11 +42,11 @@ public class RestaurantManager {
 	}
 	
 	public void addToReturn() {
-		returnQueue.enqueue(eatList.getFirst());
+		returnQueue.enqueue(eatList.dequeue());
 	}
 	
 	public void addToEat() {
-		eatList.addFirst(lunchQueue.dequeue());
+		eatList.enqueue(lunchQueue.dequeue());
 		lunchCount++;
 	}
 	
@@ -73,9 +73,8 @@ public class RestaurantManager {
 	}
 
 	public ArrayList<Student> getEatList() {
-		return eatList.getInfoList();
+		return eatList.getList();
 	}
-	
 
 	public int getCredits() {
 		return credits;

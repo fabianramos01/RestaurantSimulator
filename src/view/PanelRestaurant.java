@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -18,52 +17,47 @@ public class PanelRestaurant extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JPanel panelCredits;
 	private JPanel panelLunch;
-	private JPanel panelEat;
+	private PanelStudentLLunch paEsLunch;
+	private ImageIcon imageStandScaled;
+	private ImageIcon imageStudentCScaled;
+	private ImageIcon imageStudentLScaled;
 
 	public PanelRestaurant() {
+		imageStandScaled = UtilityList.scaledImage(new ImageIcon(getClass().getResource(ConstantList.STAND_IMG)), 100,
+				100);
+		imageStudentCScaled = UtilityList
+				.scaledImage(new ImageIcon(getClass().getResource(ConstantList.STUDENT_CREDIT_IMG)), 100, 100);
 		setLayout(new BorderLayout());
+		imageStudentLScaled = UtilityList.scaledImage(new ImageIcon(getClass().getResource(ConstantList.STUDENT_IMG)),
+				100, 100);
 		panelCredits = new JPanel();
-		loadCredits(null);
+		panelCredits.setBorder(BorderFactory.createTitledBorder(ConstantList.CREDITS_QUEUE));
 		add(panelCredits, BorderLayout.NORTH);
 		panelLunch = new JPanel();
-		loadLunch(null);
+		panelLunch.setBorder(BorderFactory.createTitledBorder(ConstantList.LUNCH_QUEUE));
 		add(panelLunch, BorderLayout.WEST);
-		panelEat = new JPanel();
-		add(panelEat, BorderLayout.CENTER);
+		paEsLunch = new PanelStudentLLunch();
+		add(paEsLunch, BorderLayout.CENTER);
 	}
 
 	public void loadCredits(ArrayList<Student> list) {
 		panelCredits.removeAll();
-		panelCredits.updateUI();
-		panelCredits.setBorder(BorderFactory.createTitledBorder(ConstantList.CREDITS_QUEUE));
-		ImageIcon imageIcon = new ImageIcon(getClass().getResource(ConstantList.STAND_IMG));
-		JLabel label = new JLabel(UtilityList.scaledImage(imageIcon, 100, 100));
-		panelCredits.add(label);
-		loadPanelList(panelCredits, UtilityList
-				.scaledImage(new ImageIcon(getClass().getResource(ConstantList.STUDENT_CREDIT_IMG)), 100, 100), list);
-		repaint();
+		panelCredits.add(new JLabel(imageStandScaled));
+		loadPanelList(panelCredits, imageStudentCScaled, list);
+		revalidate();
 	}
 
 	public void loadLunch(ArrayList<Student> list) {
 		panelLunch.removeAll();
-		panelLunch.updateUI();
-		panelLunch.setBorder(BorderFactory.createTitledBorder(ConstantList.LUNCH_QUEUE));
 		if (list != null) {
 			panelLunch.setLayout(new GridLayout(list.size(), 1));
-			loadPanelList(panelLunch,
-					UtilityList.scaledImage(new ImageIcon(getClass().getResource(ConstantList.STUDENT_IMG)), 100, 100),
-					list);
+			loadPanelList(panelLunch, imageStudentLScaled, list);
 		}
-		repaint();
+		revalidate();
 	}
-	
+
 	public void loadEat(ArrayList<Student> list) {
-		panelEat.removeAll();
-		panelEat.updateUI();
-		panelEat.setLayout(new GridLayout(15,15));
-		for (Student student : list) {
-			panelEat.add(UtilityList.createJLabel(student.toString(), ConstantList.WORD_FONT, Color.BLACK));
-		}
+		paEsLunch.loadStudents(list);
 		repaint();
 	}
 

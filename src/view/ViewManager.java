@@ -13,11 +13,7 @@ public class ViewManager {
 	public ViewManager(Controller controller) {
 		principalFrame = new PrincipalFrame();
 		panelRestaurant = new PanelRestaurant();
-	}
-	
-	public void loadRestaurantPanel() {
 		principalFrame.add(panelRestaurant);
-		principalFrame.repaint();
 	}
 	
 	public void loadCreditList(ArrayList<Student> list) {
