@@ -32,6 +32,7 @@ public class PanelRestaurant extends JPanel {
 				100, 100);
 		panelCredits = new JPanel();
 		panelCredits.setBorder(BorderFactory.createTitledBorder(ConstantList.CREDITS_QUEUE));
+		panelCredits.add(new JLabel(imageStandScaled));
 		add(panelCredits, BorderLayout.NORTH);
 		panelLunch = new JPanel();
 		panelLunch.setBorder(BorderFactory.createTitledBorder(ConstantList.LUNCH_QUEUE));
