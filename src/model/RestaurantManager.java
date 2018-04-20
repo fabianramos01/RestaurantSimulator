@@ -21,6 +21,7 @@ public class RestaurantManager {
 		returnQueue = new MyQueue<>();
 		trayStack = new Stack<>();
 		eatList = new NodeList<>();
+		addToTray();
 	}
 	
 	public static Node<Student> newStudent() {
@@ -42,6 +43,11 @@ public class RestaurantManager {
 	
 	public void addToReturn() {
 		returnQueue.enqueue(eatList.getFirst());
+	}
+	
+	public void addToEat() {
+		eatList.addFirst(lunchQueue.dequeue());
+		lunchCount++;
 	}
 	
 	public void addToTray() {

@@ -27,4 +27,8 @@ public class ViewManager {
 	public void loadLunchList(ArrayList<Student> list) {
 		panelRestaurant.loadLunch(list);
 	}
+	
+	public void loadEatList(ArrayList<Student> list) {
+		panelRestaurant.loadEat(list);
+	}
 }

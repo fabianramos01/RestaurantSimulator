@@ -13,14 +13,15 @@ public class Controller implements ActionListener {
 	private ViewManager viewManager;
 	private RestaurantManager restManager;
 	private Timer timerCredit;
+	private Timer timerLunch;
 
 	public Controller() {
 		viewManager = new ViewManager(this);
 		restManager = new RestaurantManager();
 		viewManager.loadRestaurantPanel();
 		timeCredit();
-		timerCredit.stop();
 		timePerson();
+		timeLunch();
 	}
 
 	private void timePerson() {
@@ -53,7 +54,34 @@ public class Controller implements ActionListener {
 			}
 		}
 	}
+	
+	private void validateLunchTime() {
+		if (!restManager.getLunchQueue().isEmpty()) {
+			if (timerLunch.isRunning()) {
+				restManager.buyCredit();
+				viewManager.loadLunchList(restManager.getLunchQueue());
+				viewManager.loadEatList(restManager.getEatList());
+			} else {
+				timeLunch();
+				timerLunch.start();
+			}
+		} else {
+			if (timerLunch != null) {
+				timerCredit.stop();
+			}
+		}
+	}
 
+	private void timeLunch() {
+		timerLunch = new Timer(11000, new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				validateLunchTime();
+			}
+		});
+	}
+	
 	private void timeCredit() {
 		timerCredit = new Timer(7000, new ActionListener() {
 
