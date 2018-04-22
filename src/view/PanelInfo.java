@@ -31,7 +31,7 @@ public class PanelInfo extends JPanel {
 		add(UtilityList.createJLabel(ConstantList.CREDIT_TIME, ConstantList.WORD_FONT, Color.BLACK));
 		sliderLunch = createSlider(1, ConstantList.MAX_CREDIT_TIME, 20, controller);
 		add(sliderLunch);
-		add(UtilityList.createJButtonText(Command.COMMAND_PLAY.getCommand(), Command.COMMAND_PLAY.getTitle(),
+		add(UtilityList.createJButtonText(Command.COMMAND_ACCEPT.getCommand(), Command.COMMAND_ACCEPT.getTitle(),
 				Color.WHITE, Color.BLACK, ConstantList.WORD_FONT, controller));
 	}
 
@@ -43,15 +43,15 @@ public class PanelInfo extends JPanel {
 		slider.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 		return slider;
 	}
-	
+
 	public int getPersonTime() {
 		return sliderPerson.getValue();
 	}
-	
+
 	public int getCreditTime() {
 		return sliderCredit.getValue();
 	}
-	
+
 	public int getLunchTime() {
 		return sliderLunch.getValue();
 	}

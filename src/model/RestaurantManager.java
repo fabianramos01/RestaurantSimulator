@@ -38,15 +38,21 @@ public class RestaurantManager {
 	}
 	
 	public void buyCredit() {
-		lunchQueue.enqueue(creditQueue.dequeue());
+		Node<Student> student = creditQueue.dequeue();
+		student.setNext(null);
+		lunchQueue.enqueue(student);
 	}
 	
 	public void addToReturn() {
-		returnQueue.enqueue(eatList.dequeue());
+		Node<Student> student = eatList.dequeue();
+		student.setNext(null);
+		returnQueue.enqueue(student);
 	}
 	
 	public void addToEat() {
-		eatList.enqueue(lunchQueue.dequeue());
+		Node<Student> student = lunchQueue.dequeue();
+		student.setNext(null);
+		eatList.enqueue(student);
 		lunchCount++;
 	}
 	

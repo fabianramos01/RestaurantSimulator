@@ -3,7 +3,6 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JSlider;
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -17,21 +16,43 @@ public class Controller implements ActionListener, ChangeListener {
 	private RestaurantManager restManager;
 	private Timer timerCredit;
 	private Timer timerLunch;
+	private Timer timerPerson;
+	private Timer timerSimulation;
+	private double initTime;
 
 	public Controller() {
 		restManager = new RestaurantManager();
 		viewManager = new ViewManager(this);
 	}
-	
-	private void init() {
-		viewManager.loadFrame();
+
+	private void start() {
 		timeCredit();
-		timePerson();
 		timeLunch();
+		timePerson();
+		timeSystem();
+		timerPerson.start();
+		timerSimulation.start();
+	}
+
+	private void stop() {
+		timerPerson.stop();
+		timerCredit.stop();
+		timerLunch.stop();
+		timerSimulation.stop();
+	}
+	
+	private void timeSystem() {
+		timerSimulation = new Timer(ConstantList.MILLIS, new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				viewManager.setTime((int)(System.currentTimeMillis() - initTime) / ConstantList.MILLIS);
+			}
+		});
 	}
 
 	private void timePerson() {
-		Timer timer = new Timer(viewManager.getPersonTime()*1000, new ActionListener() {
+		timerPerson = new Timer(viewManager.getPersonTime() * ConstantList.MILLIS, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -40,7 +61,6 @@ public class Controller implements ActionListener, ChangeListener {
 				validateLunchTime();
 			}
 		});
-		timer.start();
 	}
 
 	private void validateCreditTime() {
@@ -59,7 +79,7 @@ public class Controller implements ActionListener, ChangeListener {
 			}
 		}
 	}
-	
+
 	private void validateLunchTime() {
 		if (!restManager.getLunchQueue().isEmpty()) {
 			if (timerLunch.isRunning()) {
@@ -78,7 +98,7 @@ public class Controller implements ActionListener, ChangeListener {
 	}
 
 	private void timeLunch() {
-		timerLunch = new Timer(viewManager.getLunchTime()*1000, new ActionListener() {
+		timerLunch = new Timer(viewManager.getLunchTime() * ConstantList.MILLIS, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -86,9 +106,9 @@ public class Controller implements ActionListener, ChangeListener {
 			}
 		});
 	}
-	
+
 	private void timeCredit() {
-		timerCredit = new Timer(viewManager.getCreditTime()*1000, new ActionListener() {
+		timerCredit = new Timer(viewManager.getCreditTime() * ConstantList.MILLIS, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -100,18 +120,21 @@ public class Controller implements ActionListener, ChangeListener {
 	@Override
 	public void actionPerformed(ActionEvent action) {
 		switch (Command.valueOf(action.getActionCommand())) {
-		case COMMAND_CANCEL:
+		case COMMAND_STOP:
+			stop();
 			break;
 		case COMMAND_PLAY:
-			init();
+			start();
+			initTime = System.currentTimeMillis();
+			break;
+		case COMMAND_ACCEPT:
+			viewManager.loadFrame(this);
 			break;
 		}
 	}
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		JSlider slider = (JSlider) e.getSource();
-		System.out.println(slider.getValue());
 	}
 
 }

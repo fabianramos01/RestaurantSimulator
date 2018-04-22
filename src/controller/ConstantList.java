@@ -18,12 +18,16 @@ public class ConstantList {
 	public static final Font WORD_FONT = new Font("Agency FB", Font.BOLD, 27);
 	public static final String EAT_QUEUE = "Restaurante";
 	
-	public static final int MAX_PERSON_TIME = 60;
+	public static final int MAX_PERSON_TIME = 120;
 	public static final int MAX_CREDIT_TIME = 100;
 	public static final int WIDTH_DIALOG = 450;
 	public static final int HEIGTH_DIALOG = 500;
 	public static final String PERSON_TIME = "Tiempo de llegada de una nueva persona (seg)";
 	public static final String LUNCH_TIME = "Tiempo de atención en la fila del almuerzo (seg)";
 	public static final String CREDIT_TIME = "Tiempo de atención en la fila de creditos (seg)";
+	public static final String TIME = "Tiempo de ejecución: ";
+	
+	public static final int MILLIS = 1000;
+	public static final String TIME_UNIT = " seg";
 	
 }
