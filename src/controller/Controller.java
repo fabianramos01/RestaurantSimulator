@@ -3,12 +3,15 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JSlider;
 import javax.swing.Timer;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import model.RestaurantManager;
 import view.ViewManager;
 
-public class Controller implements ActionListener {
+public class Controller implements ActionListener, ChangeListener {
 
 	private ViewManager viewManager;
 	private RestaurantManager restManager;
@@ -18,13 +21,17 @@ public class Controller implements ActionListener {
 	public Controller() {
 		restManager = new RestaurantManager();
 		viewManager = new ViewManager(this);
+	}
+	
+	private void init() {
+		viewManager.loadFrame();
 		timeCredit();
 		timePerson();
 		timeLunch();
 	}
 
 	private void timePerson() {
-		Timer timer = new Timer(10000, new ActionListener() {
+		Timer timer = new Timer(viewManager.getPersonTime()*1000, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -71,7 +78,7 @@ public class Controller implements ActionListener {
 	}
 
 	private void timeLunch() {
-		timerLunch = new Timer(11000, new ActionListener() {
+		timerLunch = new Timer(viewManager.getLunchTime()*1000, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -81,7 +88,7 @@ public class Controller implements ActionListener {
 	}
 	
 	private void timeCredit() {
-		timerCredit = new Timer(7000, new ActionListener() {
+		timerCredit = new Timer(viewManager.getCreditTime()*1000, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -96,8 +103,15 @@ public class Controller implements ActionListener {
 		case COMMAND_CANCEL:
 			break;
 		case COMMAND_PLAY:
+			init();
 			break;
 		}
+	}
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		JSlider slider = (JSlider) e.getSource();
+		System.out.println(slider.getValue());
 	}
 
 }
