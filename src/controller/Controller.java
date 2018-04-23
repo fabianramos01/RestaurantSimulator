@@ -18,7 +18,7 @@ public class Controller implements ActionListener, ChangeListener {
 	private Timer timerLunch;
 	private Timer timerPerson;
 	private Timer timerSimulation;
-	private double initTime;
+	private int initTime;
 
 	public Controller() {
 		restManager = new RestaurantManager();
@@ -46,7 +46,7 @@ public class Controller implements ActionListener, ChangeListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				viewManager.setTime((int)(System.currentTimeMillis() - initTime) / ConstantList.MILLIS);
+				viewManager.setTime(initTime++);
 			}
 		});
 	}
@@ -125,10 +125,13 @@ public class Controller implements ActionListener, ChangeListener {
 			break;
 		case COMMAND_PLAY:
 			start();
-			initTime = System.currentTimeMillis();
 			break;
 		case COMMAND_ACCEPT:
 			viewManager.loadFrame(this);
+			break;
+		case COMMAND_NEW_SIMULATION:
+			viewManager.newSimulation();
+			stop();
 			break;
 		}
 	}

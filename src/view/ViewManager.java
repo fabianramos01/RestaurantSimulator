@@ -29,8 +29,14 @@ public class ViewManager {
 		principalFrame = new PrincipalFrame();
 		panelRestaurant = new PanelRestaurant();
 		principalFrame.add(panelRestaurant, BorderLayout.CENTER);
+		principalFrame.setJMenuBar(new MenuBarSimulation(controller));
 		panelTime(controller);
 		principalFrame.revalidate();
+	}
+	
+	public void newSimulation() {
+		diInformation.setVisible(true);
+		principalFrame.setVisible(false);
 	}
 
 	private void panelTime(ActionListener listener) {

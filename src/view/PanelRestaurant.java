@@ -21,6 +21,7 @@ public class PanelRestaurant extends JPanel {
 	private ImageIcon imageStandScaled;
 	private ImageIcon imageStudentCScaled;
 	private ImageIcon imageStudentLScaled;
+	private ImageIcon imageRestaurantLScaled;
 
 	public PanelRestaurant() {
 		imageStandScaled = UtilityList.scaledImage(new ImageIcon(getClass().getResource(ConstantList.STAND_IMG)), 100,
@@ -30,12 +31,19 @@ public class PanelRestaurant extends JPanel {
 		setLayout(new BorderLayout());
 		imageStudentLScaled = UtilityList.scaledImage(new ImageIcon(getClass().getResource(ConstantList.STUDENT_IMG)),
 				100, 100);
-		panelCredits = new JPanel();
+		imageRestaurantLScaled = UtilityList
+				.scaledImage(new ImageIcon(getClass().getResource(ConstantList.RESTAURANT_IMG)), 100, 100);
+		init();
+	}
+	
+	private void init() {
+		panelCredits = new JPanel(new BorderLayout());
 		panelCredits.setBorder(BorderFactory.createTitledBorder(ConstantList.CREDITS_QUEUE));
-		panelCredits.add(new JLabel(imageStandScaled));
+		panelCredits.add(new JLabel(imageStandScaled), BorderLayout.WEST);
 		add(panelCredits, BorderLayout.NORTH);
 		panelLunch = new JPanel();
 		panelLunch.setBorder(BorderFactory.createTitledBorder(ConstantList.LUNCH_QUEUE));
+		panelLunch.add(new JLabel(imageRestaurantLScaled));
 		add(panelLunch, BorderLayout.WEST);
 		paEsLunch = new PanelStudentLLunch();
 		add(paEsLunch, BorderLayout.CENTER);
@@ -43,17 +51,21 @@ public class PanelRestaurant extends JPanel {
 
 	public void loadCredits(ArrayList<Student> list) {
 		panelCredits.removeAll();
-		panelCredits.add(new JLabel(imageStandScaled));
-		loadPanelList(panelCredits, imageStudentCScaled, list);
+		panelCredits.setLayout(new BorderLayout());
+		panelCredits.add(new JLabel(imageStandScaled), BorderLayout.WEST);
+		JPanel panel = new JPanel(new GridLayout(1, list.size() + 1));
+		loadPanelList(panel, imageStudentCScaled, list);
+		panelCredits.add(panel, BorderLayout.CENTER);
 		revalidate();
 	}
 
 	public void loadLunch(ArrayList<Student> list) {
 		panelLunch.removeAll();
-		if (list != null) {
-			panelLunch.setLayout(new GridLayout(list.size(), 1));
-			loadPanelList(panelLunch, imageStudentLScaled, list);
-		}
+		panelLunch.setLayout(new BorderLayout());
+		panelLunch.add(new JLabel(imageRestaurantLScaled), BorderLayout.NORTH);
+		JPanel panel = new JPanel(new GridLayout(list.size() + 1, 1));
+		loadPanelList(panel, imageStudentLScaled, list);
+		panelLunch.add(panel, BorderLayout.CENTER);
 		revalidate();
 	}
 

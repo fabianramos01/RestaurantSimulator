@@ -6,7 +6,8 @@ public enum Command {
 
 	COMMAND_PLAY("COMMAND_PLAY", "Iniciar", "/img/play.png"),
 	COMMAND_ACCEPT("COMMAND_ACCEPT", "Aceptar", ""),
-	COMMAND_STOP("COMMAND_STOP", "Detener", "/img/cancel.png");
+	COMMAND_STOP("COMMAND_STOP", "Detener", "/img/cancel.png"), 
+	COMMAND_NEW_SIMULATION("COMMAND_NEW_SIMULATION", "Nueva simulación", "");
 	
 	private String command;
 	private String title;
