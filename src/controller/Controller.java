@@ -164,6 +164,9 @@ public class Controller implements ActionListener, ChangeListener {
 			viewManager.newSimulation();
 			stop();
 			break;
+		case COMMAND_REPORT:
+			viewManager.loadReport(restManager);
+			break;
 		}
 	}
 

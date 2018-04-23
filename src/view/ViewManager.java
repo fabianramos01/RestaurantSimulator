@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import controller.Command;
 import controller.ConstantList;
 import controller.Controller;
+import model.RestaurantManager;
 import model.Student;
 
 public class ViewManager {
@@ -45,6 +46,8 @@ public class ViewManager {
 				Command.COMMAND_PLAY.getImage(), listener));
 		panel.add(UtilityList.createJButton(Command.COMMAND_STOP.getCommand(), Command.COMMAND_STOP.getTitle(),
 				Command.COMMAND_STOP.getImage(), listener));
+		panel.add(UtilityList.createJButton(Command.COMMAND_REPORT.getCommand(), Command.COMMAND_REPORT.getTitle(),
+				Command.COMMAND_REPORT.getImage(), listener));
 		labelTime = UtilityList.createJLabel(ConstantList.TIME + "0", ConstantList.WORD_FONT, Color.BLACK);
 		panel.add(labelTime);
 		principalFrame.add(panel, BorderLayout.SOUTH);
@@ -53,6 +56,10 @@ public class ViewManager {
 	public void setTime(int time) {
 		labelTime.setText(ConstantList.TIME + time + ConstantList.TIME_UNIT);
 		principalFrame.revalidate();
+	}
+	
+	public void loadReport(RestaurantManager manager) {
+		new DialogReport(manager);
 	}
 
 	public void loadCreditList(ArrayList<Student> list) {

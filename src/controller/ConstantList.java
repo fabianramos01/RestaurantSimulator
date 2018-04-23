@@ -34,5 +34,14 @@ public class ConstantList {
 	public static final String TIME_UNIT = " seg";
 	public static final String SIMULATION = "Simulación";
 	public static final String SIMULATOR_PARAM = "Parametros De Simulación";
+	public static final String REPORT = "Reporte";
+	public static final String MONEY = "Monto de dinero recibido: $";
+	public static final int COST_CREDIT = 2300;
+	public static final String STUDENT_ATTEND = "Cantidad de estudiantes atendidos: ";
+	public static final String STUDENT_OUT = "Estudiantes fuera del sistema ";
 	
+	public static final int WIDTH_DIALOG_R = 400;
+	public static final int HEIGTH_DIALOG_R = 300;
+	public static final String STUDENT_QUEUE_LUNCH = "Estudiantes en la fila del almuerzo ";
+	public static final String STUDENT_QUEUE_CREDIT = "Estudiantes en la fila de creditos ";
 }
