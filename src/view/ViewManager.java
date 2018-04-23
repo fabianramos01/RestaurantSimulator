@@ -67,6 +67,10 @@ public class ViewManager {
 		panelRestaurant.loadEat(list);
 	}
 
+	public void loadReturnList(ArrayList<Student> list) {
+		panelRestaurant.loadReturn(list);
+	}
+	
 	public int getPersonTime() {
 		return diInformation.getPersonTime();
 	}

@@ -17,7 +17,8 @@ public class PanelRestaurant extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JPanel panelCredits;
 	private JPanel panelLunch;
-	private PanelStudentLLunch paEsLunch;
+	private JPanel panelReturn;
+	private PanelStudentLunch paEsLunch;
 	private ImageIcon imageStandScaled;
 	private ImageIcon imageStudentCScaled;
 	private ImageIcon imageStudentLScaled;
@@ -45,8 +46,10 @@ public class PanelRestaurant extends JPanel {
 		panelLunch.setBorder(BorderFactory.createTitledBorder(ConstantList.LUNCH_QUEUE));
 		panelLunch.add(new JLabel(imageRestaurantLScaled));
 		add(panelLunch, BorderLayout.WEST);
-		paEsLunch = new PanelStudentLLunch();
+		paEsLunch = new PanelStudentLunch();
 		add(paEsLunch, BorderLayout.CENTER);
+		panelReturn = new JPanel();
+		add(panelReturn, BorderLayout.EAST);
 	}
 
 	public void loadCredits(ArrayList<Student> list) {
@@ -72,6 +75,15 @@ public class PanelRestaurant extends JPanel {
 	public void loadEat(ArrayList<Student> list) {
 		paEsLunch.loadStudents(list);
 		repaint();
+	}
+	
+	public void loadReturn(ArrayList<Student> list) {
+		panelReturn.removeAll();
+		panelReturn.setLayout(new BorderLayout());
+		JPanel panel = new JPanel(new GridLayout(list.size() + 1, 1));
+		loadPanelList(panel, imageStudentLScaled, list);
+		panelReturn.add(panel, BorderLayout.EAST);
+		revalidate();
 	}
 
 	private void loadPanelList(JPanel panel, ImageIcon image, ArrayList<Student> list) {

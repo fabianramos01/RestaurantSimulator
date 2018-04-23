@@ -21,7 +21,8 @@ public class PanelInfo extends JPanel {
 	private JSlider sliderLunch;
 
 	public PanelInfo(Controller controller) {
-		setLayout(new GridLayout(7, 1));
+		setLayout(new GridLayout(8, 1));
+		add(UtilityList.createJLabel(ConstantList.SIMULATOR_PARAM, ConstantList.TITLE_FONT, Color.BLACK));
 		add(UtilityList.createJLabel(ConstantList.PERSON_TIME, ConstantList.WORD_FONT, Color.BLACK));
 		sliderPerson = createSlider(1, ConstantList.MAX_PERSON_TIME, 10, controller);
 		add(sliderPerson);

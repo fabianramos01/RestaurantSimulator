@@ -18,6 +18,7 @@ public class Controller implements ActionListener, ChangeListener {
 	private Timer timerLunch;
 	private Timer timerPerson;
 	private Timer timerSimulation;
+	private Timer timerReturn;
 	private int initTime;
 
 	public Controller() {
@@ -30,6 +31,7 @@ public class Controller implements ActionListener, ChangeListener {
 		timeLunch();
 		timePerson();
 		timeSystem();
+		timeReturn();
 		timerPerson.start();
 		timerSimulation.start();
 	}
@@ -80,6 +82,23 @@ public class Controller implements ActionListener, ChangeListener {
 		}
 	}
 
+	private void validateReturnTime() {
+		if (!restManager.getEatList().isEmpty()) {
+			if (timerReturn.isRunning()) {
+				restManager.addToReturn();
+				viewManager.loadEatList(restManager.getEatList());
+				viewManager.loadReturnList(restManager.getReturnQueue());
+			} else {
+				timeReturn();
+				timerReturn.start();
+			}
+		} else {
+			if (timerReturn != null) {
+				timerReturn.stop();
+			}
+		}
+	}
+	
 	private void validateLunchTime() {
 		if (!restManager.getLunchQueue().isEmpty()) {
 			if (timerLunch.isRunning()) {
@@ -103,6 +122,7 @@ public class Controller implements ActionListener, ChangeListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				validateLunchTime();
+				validateReturnTime();
 			}
 		});
 	}
@@ -116,6 +136,16 @@ public class Controller implements ActionListener, ChangeListener {
 			}
 		});
 	}
+	
+	private void timeReturn() {
+		timerReturn = new Timer(60 * ConstantList.MILLIS, new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				validateReturnTime();
+			}
+		});
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent action) {
@@ -125,6 +155,7 @@ public class Controller implements ActionListener, ChangeListener {
 			break;
 		case COMMAND_PLAY:
 			start();
+			initTime = 0;
 			break;
 		case COMMAND_ACCEPT:
 			viewManager.loadFrame(this);

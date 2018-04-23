@@ -10,12 +10,14 @@ public class ConstantList {
 	public static final int TRAY_COUNT = 20;
 	public static final String STUDENT_IMG = "/img/student.jpg";
 	public static final String RESTAURANT_IMG = "/img/restaurant_queue.jpg";
+	public static final String STUDENT_EAT_IMG = "/img/student_eat.png";
 	public static final String STUDENT_CREDIT_IMG = "/img/student_credit.png";
 	public static final String STAND_IMG = "/img/stand.png";
 	public static final String BACKGROUND_IMG = "/img/background.jpg";
 	
 	public static final String CREDITS_QUEUE = "Fila de creditos";
 	public static final String LUNCH_QUEUE = "Fila de almuerzo";
+	public static final Font TITLE_FONT = new Font("Agency FB", Font.BOLD, 35);
 	public static final Font WORD_FONT = new Font("Agency FB", Font.BOLD, 27);
 	public static final String EAT_QUEUE = "Restaurante";
 	
@@ -31,5 +33,6 @@ public class ConstantList {
 	public static final int MILLIS = 1000;
 	public static final String TIME_UNIT = " seg";
 	public static final String SIMULATION = "Simulación";
+	public static final String SIMULATOR_PARAM = "Parametros De Simulación";
 	
 }
