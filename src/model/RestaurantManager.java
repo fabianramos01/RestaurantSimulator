@@ -39,6 +39,7 @@ public class RestaurantManager {
 	
 	public void buyCredit() {
 		Node<Student> student = creditQueue.dequeue();
+		credits++;
 		student.setNext(null);
 		lunchQueue.enqueue(student);
 	}

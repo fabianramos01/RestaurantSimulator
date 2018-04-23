@@ -32,7 +32,7 @@ public class DialogReport extends JDialog {
 				+ ConstantList.STUDENT_ATTEND + manager.getLunchCount() + "<br>" + ConstantList.STUDENT_OUT
 				+ manager.getReturnQueue().size() + "<br>" + ConstantList.STUDENT_QUEUE_LUNCH
 				+ manager.getLunchQueue().size() + "<br>" + ConstantList.STUDENT_QUEUE_CREDIT
-				+ manager.getReturnQueue().size();
+				+ manager.getCreditQueue().size();
 		label.setText(info);
 		return label;
 	}

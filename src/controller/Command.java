@@ -8,7 +8,7 @@ public enum Command {
 	COMMAND_ACCEPT("COMMAND_ACCEPT", "Aceptar", ""),
 	COMMAND_STOP("COMMAND_STOP", "Detener", "/img/cancel.png"), 
 	COMMAND_REPORT("COMMAND_REPORT", "Generar reporte", "/img/report.png"), 
-	COMMAND_NEW_SIMULATION("COMMAND_NEW_SIMULATION", "Nueva simulación", "");
+	COMMAND_NEW_SIMULATION("COMMAND_NEW_SIMULATION", "Nueva simulación", "/img/configuration.png");
 	
 	private String command;
 	private String title;

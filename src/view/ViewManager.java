@@ -48,6 +48,8 @@ public class ViewManager {
 				Command.COMMAND_STOP.getImage(), listener));
 		panel.add(UtilityList.createJButton(Command.COMMAND_REPORT.getCommand(), Command.COMMAND_REPORT.getTitle(),
 				Command.COMMAND_REPORT.getImage(), listener));
+		panel.add(UtilityList.createJButton(Command.COMMAND_NEW_SIMULATION.getCommand(), Command.COMMAND_NEW_SIMULATION.getTitle(),
+				Command.COMMAND_NEW_SIMULATION.getImage(), listener));
 		labelTime = UtilityList.createJLabel(ConstantList.TIME + "0", ConstantList.WORD_FONT, Color.BLACK);
 		panel.add(labelTime);
 		principalFrame.add(panel, BorderLayout.SOUTH);
