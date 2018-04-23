@@ -38,8 +38,9 @@ public class PanelStudentLunch extends JPanel {
 
 	@Override
 	public void paint(Graphics g) {
+		g.drawImage(new ImageIcon(getClass().getResource(ConstantList.BACKGROUND_IMG)).getImage(), 0, 0,
+				(int) getSize().getWidth(), (int) getSize().getHeight(), this);
+		setOpaque(false);
 		super.paint(g);
-//		g.drawImage(new ImageIcon(getClass().getResource(ConstantList.BACKGROUND_IMG)).getImage(), 0, 0,
-//				(int) getSize().getWidth(), (int) getSize().getHeight(), this);
 	}
 }

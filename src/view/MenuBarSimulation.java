@@ -19,7 +19,9 @@ public class MenuBarSimulation extends JMenuBar {
 
 	public MenuBarSimulation(ActionListener listener) {
 		menuSimulation = new JMenu(ConstantList.SIMULATION);
-		menuSimulation.add(addJMenuItem(Command.COMMAND_NEW_SIMULATION, 'A', listener));
+		menuSimulation.add(addJMenuItem(Command.COMMAND_NEW_SIMULATION, 'N', listener));
+		menuSimulation.add(addJMenuItem(Command.COMMAND_PLAY, 'P', listener));
+		menuSimulation.add(addJMenuItem(Command.COMMAND_STOP, 'N', listener));
 		add(menuSimulation);
 	}
 
